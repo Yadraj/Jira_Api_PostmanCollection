@@ -1,0 +1,393 @@
+{
+	"info": {
+		"_postman_id": "58d98fd0-f66e-4c2e-b6ce-1e94aa08486a",
+		"name": "Jira_Rest_Api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25519545"
+	},
+	"item": [
+		{
+			"name": "Create_Session",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "content-type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"username\": \"yadraj\", \"password\": \"yadraj\" }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/rest/auth/1/session",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"rest",
+						"auth",
+						"1",
+						"session"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create_Issue",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "cookie",
+						"value": "JSESSIONID=0B3FAE88C4ECEB9CC2CDC8AB6B13963B",
+						"type": "text"
+					},
+					{
+						"key": "content-type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"fields\": {\r\n        \"project\": {\r\n            \"key\": \"JIR\"\r\n        },\r\n        \"summary\": \"first issue\",\r\n        \"description\": \"first description\",\r\n        \"issuetype\": {\r\n            \"name\": \"Bug\"\r\n        }\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/rest/api/2/issue",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"rest",
+						"api",
+						"2",
+						"issue"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete_Issue",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "cookie",
+						"value": "JSESSIONID=0B3FAE88C4ECEB9CC2CDC8AB6B13963B",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8081/rest/api/2/issue/JIR-1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"rest",
+						"api",
+						"2",
+						"issue",
+						"JIR-1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get_issue",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "cookie",
+						"value": "JSESSIONID=0B3FAE88C4ECEB9CC2CDC8AB6B13963B",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8081/rest/api/2/issue/JIR-2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"rest",
+						"api",
+						"2",
+						"issue",
+						"JIR-2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update_issue",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "cookie",
+						"value": "JSESSIONID=0B3FAE88C4ECEB9CC2CDC8AB6B13963B",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"body\": \"First Comment\",\r\n    \"visibility\": {\r\n        \"type\": \"role\",\r\n        \"value\": \"Administrators\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/rest/api/2/issue/JIR-2/comment",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"rest",
+						"api",
+						"2",
+						"issue",
+						"JIR-2",
+						"comment"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Put_Request",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "cookie",
+						"value": "JSESSIONID=0B3FAE88C4ECEB9CC2CDC8AB6B13963B",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"body\": \"Updated the existing comment.\",\r\n    \"visibility\": {\r\n        \"type\": \"role\",\r\n        \"value\": \"Administrators\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/rest/api/2/issue/JIR-2/comment/10000",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"rest",
+						"api",
+						"2",
+						"issue",
+						"JIR-2",
+						"comment",
+						"10000"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create_issue2",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "cookie",
+						"value": "JSESSIONID=430CA0E55F36375DEB6D038A5F95E24A",
+						"type": "text"
+					},
+					{
+						"key": "content-type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"fields\": {\r\n        \"project\": {\r\n            \"key\": \"JIR\"\r\n        },\r\n        \"summary\": \"second issue\",\r\n        \"description\": \"first description\",\r\n        \"issuetype\": {\r\n            \"name\": \"Bug\"\r\n        }\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/rest/api/2/issue",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"rest",
+						"api",
+						"2",
+						"issue"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update_issue2",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "cookie",
+						"value": "JSESSIONID=430CA0E55F36375DEB6D038A5F95E24A",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"body\": \"second Comment\",\r\n    \"visibility\": {\r\n        \"type\": \"role\",\r\n        \"value\": \"Administrators\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/rest/api/2/issue/JIR-3/comment",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"rest",
+						"api",
+						"2",
+						"issue",
+						"JIR-3",
+						"comment"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add_Attachments",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "cookie",
+						"value": "430CA0E55F36375DEB6D038A5F95E24A",
+						"type": "text"
+					},
+					{
+						"key": "X-Atlassian-Token",
+						"value": "no-check",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "postman-cloud:///1ef02f0f-aadb-4770-927d-6ef0199fcddd"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8081/rest/api/2/issue/10100/attachments",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"rest",
+						"api",
+						"2",
+						"issue",
+						"10100",
+						"attachments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get_issue2",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "cookie",
+						"value": "JSESSIONID=430CA0E55F36375DEB6D038A5F95E24A",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/rest/api/2/issue/10100",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"rest",
+						"api",
+						"2",
+						"issue",
+						"10100"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
